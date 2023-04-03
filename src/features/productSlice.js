@@ -31,8 +31,9 @@ const productSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
+        //console.log(action.payload.products)
         state.isLoading = false
-        state.products = action.payload
+        state.products = action.payload.products
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false

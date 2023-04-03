@@ -1,0 +1,13 @@
+.productList__container {
+  display: grid;
+  gap: 2rem 1.5rem;
+  img {
+    height: 175px;
+  }
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1170px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

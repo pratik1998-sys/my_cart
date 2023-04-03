@@ -1,0 +1,32 @@
+.container {
+  .product-image {
+    position: relative;
+    background: var(--clr-black);
+    border-radius: var(--radius);
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+  }
+  footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+    }
+    p {
+      color: var(--clr-primary-5);
+      letter-spacing: var(--spacing);
+    }
+    h5,
+    p {
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+  }
+}
