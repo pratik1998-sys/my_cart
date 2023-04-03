@@ -12,9 +12,9 @@ const Home = () => {
           </h1>
         </div>
         <div className='home-button'>
-          <button>
-            <Link to='/products'>Shop now</Link>
-          </button>
+          <Link to='/products'>
+            <button>Shop now</button>
+          </Link>
         </div>
       </div>
     </div>
