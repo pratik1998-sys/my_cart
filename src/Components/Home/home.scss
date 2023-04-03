@@ -1,0 +1,38 @@
+.home {
+  height: calc(100vh - 90px);
+  color: black;
+
+  background-image: url('../../assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .home__container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+    .home-heading {
+      width: 60%;
+    }
+    .home-button {
+      width: 100%;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: start;
+      button {
+        height: 50px;
+        width: 100px;
+        border-radius: 5px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 550;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+}

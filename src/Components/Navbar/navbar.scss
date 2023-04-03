@@ -1,0 +1,39 @@
+.navbar {
+  background-color: rgb(173, 156, 135);
+  .navbar__container {
+    height: 90px;
+    padding: 0 2rem;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: 426px) {
+      padding: 0;
+    }
+
+    .navbar-logo {
+      min-width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100px;
+        object-fit: contain;
+        cursor: pointer;
+      }
+    }
+    .navbar-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-width: 100px;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0 2rem;
+    }
+  }
+}
