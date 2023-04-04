@@ -1,0 +1,68 @@
+.sidebar {
+  position: relative;
+  width: 150px;
+  min-width: 150px;
+  .sidebar__container {
+    position: sticky;
+    top: 13%;
+    @media screen and (max-width: 500px) {
+      position: fixed;
+      z-index: 100;
+      background-color: rgba(206, 183, 171, 0.7);
+
+      top: 13%;
+      left: 0;
+    }
+    .sidebar-categories {
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      @media screen and (max-width: 500px) {
+        height: 500px;
+      }
+      @media screen and (min-width: 900px) and (max-width: 1400px) {
+        height: 600px;
+      }
+      @media screen and (min-width: 1400px) {
+        height: 645px;
+        width: 200px;
+      }
+      h5 {
+        margin: 0.2rem 0;
+        width: 80%;
+        background-color: rgb(211, 189, 189);
+        border-radius: 4px;
+        padding: 0.5rem 0.5rem;
+        @media screen and (min-width: 1400px) {
+          font-size: 22px;
+        }
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem 0;
+        overflow: scroll;
+
+        button {
+          border: none;
+          border-radius: 0.2rem;
+          background: transparent;
+          cursor: pointer;
+          padding: 0.2rem 0.4rem;
+          &:hover {
+            background-color: rgb(211, 189, 189);
+            scale: 1.1;
+          }
+          @media screen and (min-width: 2000px) {
+            font-size: 20px;
+          }
+        }
+        button.active {
+          background-color: rgb(211, 189, 189);
+        }
+      }
+    }
+  }
+}

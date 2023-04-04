@@ -2,5 +2,29 @@
   .products__container {
     padding: 1rem 1rem;
     display: flex;
+    .filter-logo {
+      display: none;
+    }
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      .sidebar {
+        display: none;
+      }
+      .sidebar.show {
+        display: block;
+      }
+      .filter-logo.hide {
+        display: none;
+      }
+      .filter-logo {
+        display: block;
+        position: fixed;
+        top: 20%;
+        left: 0;
+        padding: 1rem;
+        background-color: rgb(211, 189, 189);
+        border-radius: 0 0 2px 2px;
+      }
+    }
   }
 }

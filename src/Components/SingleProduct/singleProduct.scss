@@ -15,18 +15,47 @@
   footer {
     margin-top: 1rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 0.2rem 0;
+    .details {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      p {
+        color: var(--clr-primary-5);
+        letter-spacing: var(--spacing);
+      }
+      h5,
+      p {
+        margin-bottom: 0;
+        font-weight: 400;
+      }
+    }
+    .description {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      p {
+      }
+    }
     button {
-    }
-    p {
-      color: var(--clr-primary-5);
-      letter-spacing: var(--spacing);
-    }
-    h5,
-    p {
-      margin-bottom: 0;
-      font-weight: 400;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      border: none !important;
+      background: transparent;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: black;
+        font-size: 1.4rem;
+        cursor: pointer;
+        &:hover {
+          scale: 1.2;
+        }
+      }
     }
   }
 }

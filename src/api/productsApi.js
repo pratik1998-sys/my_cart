@@ -8,6 +8,15 @@ export const getProducts = async () => {
   return await productsApi.get('/products')
   //console.log(res.data)
 }
+export const getCategories = async () => {
+  return await productsApi.get('/products/categories')
+  //console.log(res.data)
+}
+export const getProductsOfCategory = async (category) => {
+  if (category === 'All') return await productsApi.get(`/products`)
+  return await productsApi.get(`/products/category/${category}`)
+  //console.log(res.data)
+}
 
 export const addProduct = async (product) => {
   return await productsApi.post('/products/add', {

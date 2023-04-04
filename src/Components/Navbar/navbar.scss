@@ -1,4 +1,8 @@
 .navbar {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  z-index: 100;
   background-color: rgb(173, 156, 135);
   .navbar__container {
     height: 90px;
