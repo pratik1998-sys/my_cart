@@ -1,0 +1,27 @@
+.addProduct {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 2rem;
+  form {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      width: 150px;
+      border: none;
+      background-color: rgb(211, 189, 189);
+      border-radius: 4px;
+      padding: 0.5rem 0.5rem;
+      cursor: pointer;
+    }
+  }
+}

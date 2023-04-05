@@ -11,6 +11,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   error: '',
+  current: null,
 }
 
 export const fetchProducts = createAsyncThunk(
@@ -48,13 +49,36 @@ const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    updateProducts: (state, action) => {
+      state.products = state.products.map((product) => {
+        if (product.id === parseInt(action.payload.id)) {
+          console.log('match found')
+          const updatedProduct = { ...action.payload }
+          console.log(updatedProduct)
+          return updatedProduct
+        }
+        return product
+      })
+      state.current = null
+    },
+    getProduct: (state, action) => {
+      //console.log(action.payload)
+      state.current = {
+        ...state.products.find(
+          (product) => product.id === parseInt(action.payload)
+        ),
+      }
+      // console.log(state.current)
+    },
     removeProduct: (state, action) => {
       console.log(action.payload)
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       )
     },
-    addProduct: (state, action) => {},
+    addIntoProducts: (state, action) => {
+      state.products = [...state.products, action.payload]
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -101,5 +125,6 @@ const productSlice = createSlice({
       })
   },
 })
-export const { addProduct, removeProduct } = productSlice.actions
+export const { addIntoProducts, removeProduct, getProduct, updateProducts } =
+  productSlice.actions
 export default productSlice.reducer

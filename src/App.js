@@ -3,7 +3,7 @@ import './App.css'
 import { useDispatch } from 'react-redux'
 import { fetchProducts, fetchCategories } from './features/productSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Navbar, Products, Home, Footer } from './Components/index'
+import { Navbar, Products, Home, Footer, AddProduct } from './Components/index'
 
 function App() {
   const dispatch = useDispatch()
@@ -19,6 +19,8 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/products' element={<Products />} />
+          <Route path='/product/add' element={<AddProduct />} />
+          <Route path='/product/:id' element={<AddProduct />} />
         </Routes>
         <Footer />
       </BrowserRouter>

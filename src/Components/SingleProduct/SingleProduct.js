@@ -2,10 +2,12 @@ import React from 'react'
 import './singleProduct.scss'
 import { formatPrice } from '../../utils/helpers'
 import { BsTrash } from 'react-icons/bs'
+import { FaRegEdit } from 'react-icons/fa'
 import Stars from '../../utils/Stars'
 import { deleteProduct } from '../../api/productsApi'
 import { useDispatch } from 'react-redux'
 import { removeProduct } from '../../features/productSlice'
+import { Link } from 'react-router-dom'
 
 const SingleProduct = ({ product }) => {
   const dispatch = useDispatch()
@@ -45,6 +47,9 @@ const SingleProduct = ({ product }) => {
           </p>
         </div>
         <button>
+          <Link to={`/product/${id}`}>
+            <FaRegEdit />
+          </Link>
           <BsTrash onClick={() => removeItem(product)} />
         </button>
       </footer>

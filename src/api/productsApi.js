@@ -19,17 +19,22 @@ export const getProductsOfCategory = async (category) => {
 }
 
 export const addProduct = async (product) => {
-  return await productsApi.post('/products/add', {
+  return await fetch('https://dummyjson.com/products/add', {
+    method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product),
-  })
+  }).then((res) => res.json())
 }
 
-export const updateProduct = async (product) => {
-  return await productsApi.patch(`/products/${product.id}`, {
+export const updateProduct = async (id, product) => {
+  //console.log(id, product)
+  return await fetch(`https://dummyjson.com/products/${parseInt(id)}`, {
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(product),
-  })
+    body: JSON.stringify({
+      ...product,
+    }),
+  }).then((res) => res.json())
 }
 
 export const deleteProduct = async (product) => {
