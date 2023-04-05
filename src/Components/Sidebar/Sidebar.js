@@ -46,7 +46,7 @@ const Sidebar = () => {
                   name='category'
                   className={`${currentCategory === c ? 'active' : null}`}
                 >
-                  {c}
+                  {c.charAt(0).toUpperCase() + c.slice(1).replace('-', ' ')}
                 </button>
               )
             })}
