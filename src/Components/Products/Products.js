@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './products.scss'
-import { ProductList, Sidebar } from '../index'
+import { ProductList, Sidebar, Pagination } from '../index'
 import { FaFilter } from 'react-icons/fa'
 import { useEffect } from 'react'
 
@@ -18,7 +18,10 @@ const Products = () => {
       <div className='products__container'>
         <Sidebar />
         <FaFilter className='filter-logo' onClick={() => showSidebar()} />
-        <ProductList />
+        <div className='paginate'>
+          <ProductList />
+          <Pagination />
+        </div>
       </div>
     </div>
   )

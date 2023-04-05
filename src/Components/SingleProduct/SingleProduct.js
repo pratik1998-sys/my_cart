@@ -13,8 +13,11 @@ const SingleProduct = ({ product }) => {
   const dispatch = useDispatch()
 
   const removeItem = async (product) => {
-    const response = await deleteProduct(product)
-    dispatch(removeProduct(response.data.id))
+    if (product.id > 100) dispatch(removeProduct(id))
+    else {
+      const response = await deleteProduct(product)
+      dispatch(removeProduct(response.data.id))
+    }
   }
 
   const {

@@ -2,19 +2,23 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './sidebar.scss'
-import { fetchProductsOfCategory } from '../../features/productSlice'
+import {
+  fetchProductsOfCategory,
+  setCurrentCategory,
+} from '../../features/productSlice'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
-  const { categories } = useSelector((state) => state.products)
-  const [currentCategory, setcurrentCategory] = useState('All')
+  const { categories, currentPage, currentCategory } = useSelector(
+    (state) => state.products
+  )
   //console.log(categories)
 
   const categoryHandler = (category) => {
     document.getElementsByClassName('sidebar')[0].classList.remove('show')
     document.getElementsByClassName('filter-logo')[0].classList.remove('hide')
 
-    setcurrentCategory(category)
+    dispatch(setCurrentCategory(category))
     dispatch(fetchProductsOfCategory(category))
   }
   //console.log(currentCategory)

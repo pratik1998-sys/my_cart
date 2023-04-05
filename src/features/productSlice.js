@@ -12,13 +12,25 @@ const initialState = {
   isError: false,
   error: '',
   current: null,
+  total: 0,
+  currentPage: 1,
+  currentCategory: 'All',
 }
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
+  async (parameter) => {
+    //console.log(parameter[0], parameter[1])
     try {
-      return getProducts().then((res) => res.data)
+      if (parameter[2] === 'All')
+        return getProducts(parameter[0], parameter[1]).then((res) => res.data)
+      else {
+        return getProductsOfCategory(
+          parameter[2],
+          parameter[0],
+          parameter[1]
+        ).then((res) => res.data)
+      }
     } catch (error) {
       return error.message
     }
@@ -38,7 +50,7 @@ export const fetchProductsOfCategory = createAsyncThunk(
   'products/fetchProductsOfCategory',
   async (category) => {
     try {
-      return getProductsOfCategory(category).then((res) => res.data)
+      return getProductsOfCategory(category, 20, 0).then((res) => res.data)
     } catch (error) {
       return error.message
     }
@@ -49,12 +61,16 @@ const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload
+    },
+    setCurrentCategory: (state, action) => {
+      state.currentCategory = action.payload
+    },
     updateProducts: (state, action) => {
       state.products = state.products.map((product) => {
         if (product.id === parseInt(action.payload.id)) {
-          console.log('match found')
           const updatedProduct = { ...action.payload }
-          console.log(updatedProduct)
           return updatedProduct
         }
         return product
@@ -71,7 +87,7 @@ const productSlice = createSlice({
       // console.log(state.current)
     },
     removeProduct: (state, action) => {
-      console.log(action.payload)
+      //console.log(action.payload)
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       )
@@ -89,6 +105,7 @@ const productSlice = createSlice({
         //console.log(action.payload.products)
         state.isLoading = false
         state.products = action.payload.products
+        state.total = action.payload.total
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false
@@ -114,8 +131,8 @@ const productSlice = createSlice({
       })
       .addCase(fetchProductsOfCategory.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log('event triggered')
         state.products = action.payload.products
+        state.total = action.payload.total
       })
       .addCase(fetchProductsOfCategory.rejected, (state, action) => {
         state.isLoading = false
@@ -125,6 +142,12 @@ const productSlice = createSlice({
       })
   },
 })
-export const { addIntoProducts, removeProduct, getProduct, updateProducts } =
-  productSlice.actions
+export const {
+  addIntoProducts,
+  removeProduct,
+  getProduct,
+  updateProducts,
+  setCurrentPage,
+  setCurrentCategory,
+} = productSlice.actions
 export default productSlice.reducer

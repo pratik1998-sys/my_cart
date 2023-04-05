@@ -6,6 +6,7 @@ import Products from './Products/Products'
 import Sidebar from './Sidebar/Sidebar'
 import SingleProduct from './SingleProduct/SingleProduct'
 import AddProduct from './AddProduct/AddProduct'
+import Pagination from './Pagination/Pagination'
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Sidebar,
   SingleProduct,
   AddProduct,
+  Pagination,
 }

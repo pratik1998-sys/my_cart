@@ -4,18 +4,20 @@ const productsApi = axios.create({
   baseURL: 'https://dummyjson.com',
 })
 
-export const getProducts = async () => {
-  return await productsApi.get('/products')
+export const getProducts = async (limit, skip) => {
+  return await productsApi.get(`/products?limit=${limit}&skip=${skip}`)
   //console.log(res.data)
 }
 export const getCategories = async () => {
   return await productsApi.get('/products/categories')
-  //console.log(res.data)
 }
-export const getProductsOfCategory = async (category) => {
+export const getProductsOfCategory = async (category, limit, skip) => {
+  //console.log(category, limit, skip)
   if (category === 'All') return await productsApi.get(`/products`)
-  return await productsApi.get(`/products/category/${category}`)
-  //console.log(res.data)
+  return await axios.request({
+    url: `https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`,
+    method: 'GET',
+  })
 }
 
 export const addProduct = async (product) => {

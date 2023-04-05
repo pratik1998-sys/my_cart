@@ -9,7 +9,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchProducts())
+    dispatch(fetchProducts([20, 0, 'All']))
     dispatch(fetchCategories())
   }, [])
   return (

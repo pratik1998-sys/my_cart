@@ -1,0 +1,28 @@
+.pagination {
+  ul {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem 0.5rem;
+    li {
+      cursor: pointer;
+      background-color: rgb(211, 189, 189);
+      padding: 0.5rem 0.5rem;
+      border-radius: 2px;
+      @media screen and (max-width: 500px) {
+        padding: 0.2rem 0.2rem;
+      }
+      @media screen and (min-width: 2000px) {
+        padding: 1.2rem 1.2rem;
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+        border-radius: 10px;
+      }
+      &:hover {
+        scale: 1.1;
+      }
+    }
+    li.active {
+      scale: 1.2;
+    }
+  }
+}
